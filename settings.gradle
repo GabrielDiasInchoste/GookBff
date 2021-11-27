@@ -1,2 +1,5 @@
 rootProject.name = "GookBFF"
 include("application")
+include 'web'
+include 'service'
+

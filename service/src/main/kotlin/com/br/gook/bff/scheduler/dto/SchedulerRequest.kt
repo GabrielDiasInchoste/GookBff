@@ -1,0 +1,15 @@
+package com.br.gook.bff.scheduler.dto
+
+import java.time.LocalDateTime
+import javax.validation.constraints.NotBlank
+
+data class SchedulerRequest(
+    @NotBlank(message = "Customer Id not informed")
+    val customerEmail: String,
+
+    @NotBlank(message = "Court Id not informed")
+    val courtId: Long,
+
+    @NotBlank(message = "Scheduler not informed")
+    val schedule: LocalDateTime
+)

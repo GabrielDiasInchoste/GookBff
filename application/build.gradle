@@ -1,0 +1,7 @@
+apply plugin:'application'
+
+mainClassName = "com.br.gook.user.GookBFFApplication"
+dependencies {
+    implementation project(':web')
+    implementation project(':service')
+}
