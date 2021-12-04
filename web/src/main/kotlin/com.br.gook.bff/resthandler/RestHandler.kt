@@ -1,4 +1,4 @@
-package bff.resthandler
+package com.br.gook.bff.resthandler
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
