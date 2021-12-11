@@ -45,24 +45,23 @@ class SchedulerController(
     @PostMapping(produces = [MediaType.APPLICATION_JSON_VALUE])
     fun postScheduler(
         @RequestBody @Valid schedulerRequest: SchedulerRequest
-    ): ResponseEntity<Any> {
-        schedulerService.createScheduler(schedulerRequest)
+    ): ResponseEntity<SchedulerResponse> {
 
         return ResponseEntity.status(HttpStatus.CREATED)
             .contentType(MediaType.APPLICATION_JSON)
-            .build()
+            .body(schedulerService.createScheduler(schedulerRequest))
+
     }
 
-    @PostMapping(value = ["schedulerId/{schedulerId}"], produces = [MediaType.APPLICATION_JSON_VALUE])
+    @PostMapping(value = ["cancel/schedulerId/{schedulerId}"], produces = [MediaType.APPLICATION_JSON_VALUE])
     fun postCancel(
         @PathVariable(value = "schedulerId") schedulerId: Long,
         @RequestBody @Valid cancelRequest: CancelRequest
     ): ResponseEntity<SchedulerResponse> {
-        schedulerService.requestCancel(schedulerId, cancelRequest)
 
         return ResponseEntity.status(HttpStatus.CREATED)
             .contentType(MediaType.APPLICATION_JSON)
-            .build()
+            .body(schedulerService.requestCancel(schedulerId, cancelRequest))
     }
 
 }

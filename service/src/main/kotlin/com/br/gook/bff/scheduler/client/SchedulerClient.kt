@@ -1,8 +1,6 @@
 package com.br.gook.bff.scheduler.client
 
-import com.br.gook.bff.scheduler.dto.CancelRequest
-import com.br.gook.bff.scheduler.dto.PageSchedulerResponse
-import com.br.gook.bff.scheduler.dto.SchedulerRequest
+import com.br.gook.bff.scheduler.dto.*
 import com.br.gook.data.SchedulerStatus
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.http.MediaType
@@ -33,7 +31,7 @@ interface SchedulerClient {
     )
     fun createScheduler(
         @RequestBody schedulerRequest: SchedulerRequest
-    )
+    ): SchedulerResponse
 
     @PostMapping(
         path = ["\${gook.scheduler.request.cancel.url}"],
@@ -42,5 +40,18 @@ interface SchedulerClient {
     fun requestCancel(
         @PathVariable(value = "schedulerId") schedulerId: Long,
         @RequestBody cancelRequest: CancelRequest
+    ): SchedulerResponse
+
+
+    @GetMapping(
+        path = ["\${gook.scheduler.local.find.url}"],
+        consumes = [MediaType.APPLICATION_JSON_VALUE]
     )
+    fun findAllLocalWithPaginate(
+        @RequestParam(value = "page") page: Int?,
+        @RequestParam(value = "linesPerPage") linesPage: Int?,
+        @RequestParam(value = "sort") sort: String?,
+        @RequestParam(value = "courtId") courtId: Long?,
+        @RequestParam(value = "addressId") addressId: Long?
+    ): PageLocalResponse
 }

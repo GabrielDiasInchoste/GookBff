@@ -1,6 +1,6 @@
 package com.br.gook.bff.scheduler.dto
 
-data class PageSchedulerResponse(
+data class PageLocalResponse(
     val number: Int,
     val numberOfElements: Int,
     val size: Int,
@@ -8,5 +8,5 @@ data class PageSchedulerResponse(
     val totalElements: Long,
     val first: Boolean,
     val last: Boolean,
-    val schedulers: List<SchedulerResponse>
+    val locals: List<LocalResponse>
 )

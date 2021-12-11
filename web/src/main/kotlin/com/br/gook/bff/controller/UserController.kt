@@ -3,6 +3,7 @@ package com.br.gook.bff.controller
 import com.br.gook.bff.user.UserService
 import com.br.gook.bff.user.dto.UserRequest
 import com.br.gook.bff.user.dto.UserResponse
+import org.springframework.context.annotation.Role
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
